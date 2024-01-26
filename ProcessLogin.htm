@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        div {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h2>Received Data:</h2>
+        <script>
+            // Function to parse URL parameters
+            function getParams() {
+                var params = {};
+                var urlParams = window.location.search.substring(1).split('&');
+                for (var i = 0; i < urlParams.length; i++) {
+                    var param = urlParams[i].split('=');
+                    params[param[0]] = decodeURIComponent(param[1]);
+                }
+                return params;
+            }
+
+            // Get parameters from the URL
+            var receivedData = getParams();
+
+            // Check if any data is received
+            if (Object.keys(receivedData).length > 0) {
+                // Print each field and its value
+                for (var key in receivedData) {
+                    document.write("<p><strong>" + key + ":</strong> " + receivedData[key] + "</p>");
+                }
+            } else {
+                document.write("<p>No data received.</p>");
+            }
+        </script>
+    </div>
+</body>
+
+</html>
